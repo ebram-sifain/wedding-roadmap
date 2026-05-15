@@ -482,6 +482,15 @@
           "notes": "يكون متناسق مع الديكور",
           "completed": false,
           "private": false
+        },
+        {
+          "id": "t92",
+          "title": "شراء الأدوات الكهربية الصغيرة",
+          "owner": "sherry",
+          "deadline": "أكتوبر-نوفمبر",
+          "notes": "ميكسر، كاتل، توستر، خلاط، عصارة، حلة ضغط، إيركير",
+          "completed": false,
+          "private": false
         }
       ]
     },
@@ -572,15 +581,6 @@
           "owner": "both",
           "deadline": "بداية ديسمبر",
           "notes": "بلغ القاعة والكاترينج بالعدد",
-          "completed": false,
-          "private": false
-        },
-        {
-          "id": "t92",
-          "title": "شراء الأدوات الكهربية الصغيرة",
-          "owner": "sherry",
-          "deadline": "أكتوبر-نوفمبر",
-          "notes": "ميكسر، كاتل، توستر، خلاط، عصارة، حلة ضغط، إيركير",
           "completed": false,
           "private": false
         },
@@ -983,6 +983,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-15T20:07:37.312Z",
+  "_savedAt": "2026-05-15T20:08:16.996Z",
   "_savedBy": "ebram"
 }
