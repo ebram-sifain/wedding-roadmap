@@ -473,6 +473,15 @@
           "notes": "بعد ما تخلص الدهانات",
           "completed": false,
           "private": false
+        },
+        {
+          "id": "t52",
+          "title": "الإضاءة والأباجورات",
+          "owner": "ebram",
+          "deadline": "نوفمبر",
+          "notes": "يكون متناسق مع الديكور",
+          "completed": false,
+          "private": false
         }
       ]
     },
@@ -500,15 +509,6 @@
           "owner": "sherry",
           "deadline": "نوفمبر",
           "notes": "فوط، مفارش، اكسسوارات",
-          "completed": false,
-          "private": false
-        },
-        {
-          "id": "t52",
-          "title": "الإضاءة والأباجورات",
-          "owner": "ebram",
-          "deadline": "نوفمبر",
-          "notes": "يكون متناسق مع الديكور",
           "completed": false,
           "private": false
         },
@@ -983,6 +983,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-15T20:07:28.028Z",
+  "_savedAt": "2026-05-15T20:07:37.312Z",
   "_savedBy": "ebram"
 }
