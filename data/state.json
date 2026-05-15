@@ -455,6 +455,15 @@
           "notes": "أوانٍ، أطباق، فضيات، فوط، تنظيف",
           "completed": false,
           "private": false
+        },
+        {
+          "id": "t48",
+          "title": "شراء الأجهزة الكهربائية",
+          "owner": "both",
+          "deadline": "أكتوبر",
+          "notes": "تلاجة، غسالة، بوتاجاز، فرن، ميكروويف، تكييفات، سخان، شفاط",
+          "completed": false,
+          "private": false
         }
       ]
     },
@@ -473,15 +482,6 @@
           "owner": "ebram",
           "deadline": "أكتوبر",
           "notes": "لازم التشطيب يكون خلص",
-          "completed": false,
-          "private": false
-        },
-        {
-          "id": "t48",
-          "title": "شراء الأجهزة الكهربائية",
-          "owner": "both",
-          "deadline": "أكتوبر",
-          "notes": "تلاجة، غسالة، بوتاجاز، فرن، ميكروويف، تكييفات، سخان، شفاط",
           "completed": false,
           "private": false
         },
@@ -983,6 +983,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-15T20:07:00.952Z",
+  "_savedAt": "2026-05-15T20:07:14.028Z",
   "_savedBy": "ebram"
 }
