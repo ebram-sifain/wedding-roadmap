@@ -392,12 +392,13 @@ function renderRoadmap() {
     const ms = document.createElement('div');
     ms.className = `milestone ${status}`;
     ms.dataset.phaseId = phase.id;
+    const editKey = getEventEditKey(phase.id);
     ms.innerHTML = `
       <div class="milestone-card ${phase.milestone ? 'milestone-event' : ''}" data-phase-target="${phase.id}">
         <h3 class="milestone-name">${escapeHTML(phase.titleEn)}</h3>
         <div class="milestone-name-ar">${escapeHTML(phase.title)}</div>
         <div class="milestone-meta">
-          <span class="milestone-date">📅 ${escapeHTML(phase.dateRange)}</span>
+          <span class="milestone-date">📅 ${escapeHTML(phase.dateRange)} ${inlineEditDateButton(editKey)}</span>
           <span class="milestone-status">${statusLabel(status)}</span>
         </div>
         ${hasTasks ? `
@@ -459,6 +460,7 @@ function renderPhases() {
     phaseEl.dataset.phaseId = phase.id;
     phaseEl.dataset.idx = idx;
 
+    const phaseEditKey = getEventEditKey(phase.id);
     phaseEl.innerHTML = `
       <div class="phase-header">
         <div class="phase-icon">${phase.icon}</div>
@@ -469,6 +471,7 @@ function renderPhases() {
           </h3>
           <div class="phase-meta">
             <span class="phase-date">📅 ${escapeHTML(phase.dateRange)}</span>
+            ${inlineEditDateButton(phaseEditKey)}
           </div>
         </div>
         ${(!isEvent || phase.tasks.length > 0) ? `
@@ -569,6 +572,17 @@ function getEventDateForPhase(phase) {
   if (phase.id === 'phase-1' && state.events.engagement) return new Date(state.events.engagement);
   if (phase.id === 'phase-8' && state.events.wedding) return new Date(state.events.wedding);
   return null;
+}
+
+function getEventEditKey(phaseId) {
+  if (phaseId === 'phase-1') return 'engagement';
+  if (phaseId === 'phase-8') return 'wedding';
+  return null;
+}
+
+function inlineEditDateButton(editKey) {
+  if (!editKey) return '';
+  return `<button class="inline-edit-btn" type="button" data-edit-date="${editKey}" title="Edit date · عدّل التاريخ">✎</button>`;
 }
 
 function getPhaseProgress(phase) {
@@ -970,13 +984,14 @@ function triggerConfetti() {
 function attachListeners() {
   attachTaskDelegation();
 
-  // Edit event dates (engagement / wedding)
-  document.querySelectorAll('[data-edit-date]').forEach(el => {
-    el.addEventListener('click', e => {
-      if (!isEditor()) return;
-      if (el.tagName === 'BUTTON') e.stopPropagation();
-      openEditDatesModal(el.dataset.editDate);
-    });
+  // Edit event dates — delegated so dynamically-rendered buttons (in phases
+  // and milestones) also work without re-binding after each render.
+  document.body.addEventListener('click', e => {
+    const trigger = e.target.closest('[data-edit-date]');
+    if (!trigger) return;
+    if (!isEditor()) return;
+    e.stopPropagation();
+    openEditDatesModal(trigger.dataset.editDate);
   });
   document.querySelectorAll('[data-close-dates]').forEach(el => {
     el.addEventListener('click', () => {

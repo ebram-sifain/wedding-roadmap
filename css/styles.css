@@ -528,6 +528,27 @@ body.editor-mode .date-box:hover .date-edit-btn { transform: scale(1.1); }
   background: var(--navy);
   border-color: var(--gold);
 }
+
+/* Smaller inline edit button used inside phase/milestone cards */
+.inline-edit-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: var(--rose-deep);
+  color: white;
+  font-size: 11px;
+  cursor: pointer;
+  margin-left: 6px;
+  vertical-align: middle;
+  transition: all 0.2s;
+  box-shadow: 0 2px 6px rgba(201, 123, 132, 0.3);
+}
+body.editor-mode .inline-edit-btn { display: inline-flex; }
+.inline-edit-btn:hover { background: var(--navy); transform: scale(1.15); }
 .date-edit-btn:hover {
   background: var(--rose-deep);
   color: white;
