@@ -331,15 +331,6 @@
           "private": false
         },
         {
-          "id": "t35",
-          "title": "شراء دبل الفرح",
-          "owner": "both",
-          "deadline": "سبتمبر",
-          "notes": "محفور عليها الاسم والتاريخ",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t36",
           "title": "تصميم وطباعة الدعوات",
           "owner": "both",
@@ -992,6 +983,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-15T19:58:20.153Z",
+  "_savedAt": "2026-05-15T20:01:56.485Z",
   "_savedBy": "ebram"
 }
