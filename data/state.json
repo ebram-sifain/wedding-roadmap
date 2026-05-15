@@ -250,16 +250,7 @@
           "title": "حجز الكوافير والمكياج للفرح",
           "owner": "sherry",
           "deadline": "يوليو",
-          "notes": "احجزي اللي عملت لها بروفة الخطوبة لو عجبك شغلها",
-          "completed": false,
-          "private": false
-        },
-        {
-          "id": "t28",
-          "title": "حجز DJ أو فرقة موسيقية",
-          "owner": "ebram",
-          "deadline": "يوليو",
-          "notes": "اسأل عن قائمة الأغاني الممنوعة في الكنيسة",
+          "notes": "",
           "completed": false,
           "private": false
         },
@@ -336,15 +327,6 @@
           "owner": "ebram",
           "deadline": "أغسطس-سبتمبر",
           "notes": "بروفات ٢-٣ مرات",
-          "completed": false,
-          "private": false
-        },
-        {
-          "id": "t35",
-          "title": "شراء دبل الفرح",
-          "owner": "both",
-          "deadline": "سبتمبر",
-          "notes": "محفور عليها الاسم والتاريخ",
           "completed": false,
           "private": false
         },
@@ -458,10 +440,19 @@
         },
         {
           "id": "t91",
-          "title": "شراء طاقم سفرة فاخر (china)",
+          "title": "شراء المطبخ",
           "owner": "both",
           "deadline": "سبتمبر",
           "notes": "للمناسبات والضيوف. غير الطاقم العادي",
+          "completed": false,
+          "private": false
+        },
+        {
+          "id": "t49",
+          "title": "شراء حاجة المطبخ",
+          "owner": "sherry",
+          "deadline": "أكتوبر-نوفمبر",
+          "notes": "أوانٍ، أطباق، فضيات، فوط، تنظيف",
           "completed": false,
           "private": false
         }
@@ -491,15 +482,6 @@
           "owner": "both",
           "deadline": "أكتوبر",
           "notes": "تلاجة، غسالة، بوتاجاز، فرن، ميكروويف، تكييفات، سخان، شفاط",
-          "completed": false,
-          "private": false
-        },
-        {
-          "id": "t49",
-          "title": "شراء حاجة المطبخ",
-          "owner": "sherry",
-          "deadline": "أكتوبر-نوفمبر",
-          "notes": "أوانٍ، أطباق، فضيات، فوط، تنظيف",
           "completed": false,
           "private": false
         },
@@ -1001,6 +983,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-15T20:05:20.682Z",
-  "_savedBy": "sherry"
+  "_savedAt": "2026-05-15T20:07:00.952Z",
+  "_savedBy": "ebram"
 }
