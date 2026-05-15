@@ -594,15 +594,6 @@
           "private": false
         },
         {
-          "id": "t97",
-          "title": "اشتراك إنترنت + دش",
-          "owner": "ebram",
-          "deadline": "نوفمبر",
-          "notes": "WE / فودافون / إتصالات، اختار الأنسب",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t98",
           "title": "شركة نظافة شاملة بعد التشطيب",
           "owner": "ebram",
@@ -956,6 +947,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-15T20:08:55.536Z",
+  "_savedAt": "2026-05-15T20:09:05.122Z",
   "_savedBy": "ebram"
 }
