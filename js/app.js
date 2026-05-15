@@ -23,10 +23,22 @@ const USERS = {
 
 const STORAGE_KEY = 'ebram-sherry-wedding-v1';
 const USER_KEY = 'ebram-sherry-current-user';
+const TOKEN_KEY = 'wedding-gh-token';
+
+/* ============================================================
+   CLOUD SYNC CONFIG
+============================================================ */
+const REPO_OWNER = 'ebram-sifain';
+const REPO_NAME = 'wedding-roadmap';
+const STATE_FILE_PATH = 'data/state.json';
+const STATE_BRANCH = 'main';
+const SYNC_DEBOUNCE_MS = 1500;
 
 let state = null;
 let activeFilter = 'all';
 let currentUser = null;
+let syncTimer = null;
+let stateSha = null;
 
 /* ============================================================
    INIT
@@ -48,9 +60,10 @@ function init() {
   bootApp();
 }
 
-function bootApp() {
+async function bootApp() {
+  setSyncStatus('loading');
   try {
-    state = loadState();
+    state = await loadState();
   } catch (err) {
     console.error('Failed to load data', err);
     document.body.innerHTML = '<div style="padding:40px;text-align:center;font-family:sans-serif;"><h2>Could not load tasks data</h2><p>Make sure <code>data/tasks.js</code> exists next to <code>index.html</code>.</p></div>';
@@ -63,6 +76,7 @@ function bootApp() {
   render();
   updateCountdown();
   setInterval(updateCountdown, 60 * 1000);
+  setSyncStatus(localStorage.getItem(TOKEN_KEY) ? 'idle' : (isEditor() ? 'no-token' : 'viewer'));
 }
 
 /* ============================================================
@@ -95,6 +109,19 @@ function promptPassword(userKey) {
     alert('Wrong password · باسوورد غلط');
     return;
   }
+
+  // One-time GitHub token prompt for cloud sync
+  if (!localStorage.getItem(TOKEN_KEY)) {
+    const token = prompt(
+      'Paste your GitHub token to enable cloud sync between you and Sherry.\n' +
+      'الصق التوكن لتفعيل المزامنة بينك وبين شيري.\n\n' +
+      '(Skip with empty if you only want local-only mode — متخليه فارغ لو عاوز محلي بس)'
+    );
+    if (token && token.trim()) {
+      localStorage.setItem(TOKEN_KEY, token.trim());
+    }
+  }
+
   currentUser = {
     key: userKey,
     name: user.name,
@@ -149,7 +176,15 @@ function isEditor() {
   return currentUser && currentUser.role === 'editor';
 }
 
-function loadState() {
+async function loadState() {
+  // Try cloud first — shared between Ebram & Sherry
+  const remote = await fetchRemoteState();
+  if (remote) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(remote));
+    return migrate(remote);
+  }
+
+  // Fall back to local cache
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved) {
     try {
@@ -159,10 +194,24 @@ function loadState() {
       console.warn('Corrupt saved state, reloading from default data');
     }
   }
+
+  // Last resort: the seed shipped in tasks.js
   if (!window.WEDDING_DATA) throw new Error('WEDDING_DATA not loaded');
-  // Deep clone so toggling completion does not mutate the seed
   const fresh = JSON.parse(JSON.stringify(window.WEDDING_DATA));
   return migrate(fresh);
+}
+
+async function fetchRemoteState() {
+  const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${STATE_BRANCH}/${STATE_FILE_PATH}?cb=${Date.now()}`;
+  try {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (data && data.phases) return data;
+  } catch (e) {
+    console.warn('Could not fetch remote state', e);
+  }
+  return null;
 }
 
 function migrate(data) {
@@ -184,6 +233,111 @@ function visibleTasks(phase) {
 
 function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  scheduleRemoteSave();
+}
+
+function scheduleRemoteSave() {
+  if (!isEditor()) return;
+  if (!localStorage.getItem(TOKEN_KEY)) {
+    setSyncStatus('no-token');
+    return;
+  }
+  clearTimeout(syncTimer);
+  setSyncStatus('pending');
+  syncTimer = setTimeout(saveRemoteState, SYNC_DEBOUNCE_MS);
+}
+
+async function saveRemoteState() {
+  const token = localStorage.getItem(TOKEN_KEY);
+  if (!token) return;
+  setSyncStatus('syncing');
+
+  try {
+    // Ensure we have the latest SHA (required when updating an existing file)
+    if (!stateSha) {
+      const head = await fetch(
+        `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${STATE_FILE_PATH}?ref=${STATE_BRANCH}&cb=${Date.now()}`,
+        { headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' } }
+      );
+      if (head.ok) {
+        const data = await head.json();
+        stateSha = data.sha;
+      } else if (head.status === 401 || head.status === 403) {
+        localStorage.removeItem(TOKEN_KEY);
+        setSyncStatus('auth-failed');
+        return;
+      }
+    }
+
+    const json = JSON.stringify(state, null, 2);
+    const content = utf8ToBase64(json);
+    const body = {
+      message: `Update state by ${currentUser.name}`,
+      content,
+      branch: STATE_BRANCH
+    };
+    if (stateSha) body.sha = stateSha;
+
+    const res = await fetch(
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${STATE_FILE_PATH}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      }
+    );
+
+    if (res.ok) {
+      const result = await res.json();
+      stateSha = result.content.sha;
+      setSyncStatus('saved');
+    } else if (res.status === 409 || res.status === 422) {
+      // Conflict: someone else changed it. Drop our cached SHA so we re-fetch next time.
+      stateSha = null;
+      setSyncStatus('conflict');
+    } else if (res.status === 401 || res.status === 403) {
+      localStorage.removeItem(TOKEN_KEY);
+      setSyncStatus('auth-failed');
+    } else {
+      setSyncStatus('error');
+    }
+  } catch (e) {
+    console.error('Sync failed', e);
+    setSyncStatus('error');
+  }
+}
+
+function utf8ToBase64(str) {
+  // Handles Arabic and other non-ASCII characters correctly
+  return btoa(unescape(encodeURIComponent(str)));
+}
+
+function setSyncStatus(status) {
+  const el = document.getElementById('syncStatus');
+  if (!el) return;
+  el.dataset.status = status;
+  const messages = {
+    loading:     '⏳ Loading…',
+    idle:        '☁ Synced',
+    pending:     '✎ Pending…',
+    syncing:     '🔄 Saving…',
+    saved:       '✓ Saved',
+    conflict:    '⚠ Conflict — refresh',
+    'auth-failed': '🔒 Re-login required',
+    error:       '❌ Sync error',
+    'no-token':  '⚠ No sync (local only)',
+    viewer:      '👁 View only'
+  };
+  el.textContent = messages[status] || '';
+  if (status === 'saved') {
+    setTimeout(() => {
+      if (el.dataset.status === 'saved') setSyncStatus('idle');
+    }, 2500);
+  }
 }
 
 /* ============================================================
@@ -700,11 +854,14 @@ function importDataFromFile(file) {
   reader.readAsText(file);
 }
 
-function resetAll() {
+async function resetAll() {
   if (!isEditor()) return;
   if (!confirm('Reset everything? This will erase all check marks and custom tasks. · هتمسح كل اللي علمته والتاسكات الجديدة؟')) return;
   localStorage.removeItem(STORAGE_KEY);
-  state = loadState();
+  // Wipe remote state too so all devices restart from seed
+  state = JSON.parse(JSON.stringify(window.WEDDING_DATA));
+  state = migrate(state);
+  saveState();
   render();
 }
 
@@ -737,6 +894,23 @@ function triggerConfetti() {
 ============================================================ */
 function attachListeners() {
   attachTaskDelegation();
+
+  // Click sync status to set/reset GitHub token
+  const sync = document.getElementById('syncStatus');
+  if (sync) {
+    sync.addEventListener('click', () => {
+      if (!isEditor()) return;
+      const status = sync.dataset.status;
+      if (status === 'no-token' || status === 'auth-failed' || status === 'error') {
+        const token = prompt('Paste your GitHub token · الصق التوكن:');
+        if (token && token.trim()) {
+          localStorage.setItem(TOKEN_KEY, token.trim());
+          stateSha = null;
+          scheduleRemoteSave();
+        }
+      }
+    });
+  }
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {

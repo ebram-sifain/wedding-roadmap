@@ -230,6 +230,35 @@ h2 > .en, h2 > .ar,
   color: var(--navy);
 }
 .user-badge[hidden] { display: none; }
+
+/* Sync status — small floating pill */
+.sync-status {
+  position: fixed;
+  top: 60px;
+  right: 14px;
+  background: white;
+  border: 1px solid var(--line);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  z-index: 89;
+  color: var(--text-soft);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+.sync-status:empty { display: none; }
+.sync-status[data-status="saved"]       { background: rgba(111, 168, 111, 0.12); color: var(--success); border-color: var(--success); }
+.sync-status[data-status="syncing"]     { background: rgba(70, 130, 180, 0.12); color: #2C5F8D; border-color: #88AEC7; }
+.sync-status[data-status="pending"]     { background: rgba(212, 175, 55, 0.12); color: #8A7128; border-color: var(--gold-soft); }
+.sync-status[data-status="loading"]     { background: var(--bg-soft); }
+.sync-status[data-status="conflict"]    { background: rgba(194, 101, 94, 0.12); color: var(--danger); border-color: var(--danger); }
+.sync-status[data-status="error"]       { background: rgba(194, 101, 94, 0.12); color: var(--danger); border-color: var(--danger); }
+.sync-status[data-status="auth-failed"] { background: rgba(194, 101, 94, 0.12); color: var(--danger); border-color: var(--danger); cursor: pointer; }
+.sync-status[data-status="no-token"]    { background: rgba(212, 175, 55, 0.12); color: #8A7128; border-color: var(--gold-soft); cursor: pointer; }
+.sync-status[data-status="viewer"]      { background: rgba(70, 130, 180, 0.08); color: #2C5F8D; }
+.sync-status[data-status="idle"]        { background: white; color: var(--text-mute); }
 .user-badge .user-emoji { font-size: 18px; }
 .user-badge .user-name { color: var(--navy); }
 .user-badge .user-name-ar {
