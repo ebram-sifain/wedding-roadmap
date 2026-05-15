@@ -74,15 +74,6 @@
           "private": false
         },
         {
-          "id": "t8",
-          "title": "تأكيد الدعوات للأهل والمقربين",
-          "owner": "both",
-          "deadline": "قبل 19 مايو",
-          "notes": "اتصال شخصي أحسن من رسالة",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t9",
           "title": "حجز مصور الخطوبة",
           "owner": "ebram",
