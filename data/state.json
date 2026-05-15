@@ -585,15 +585,6 @@
           "private": false
         },
         {
-          "id": "t93",
-          "title": "شراء مكنسة كهربا",
-          "owner": "sherry",
-          "deadline": "نوفمبر",
-          "notes": "هتحتاجيها للنظافة قبل وبعد النقل",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t94",
           "title": "أدوات تنظيف للبيت",
           "owner": "sherry",
@@ -983,6 +974,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-15T20:08:16.996Z",
+  "_savedAt": "2026-05-15T20:08:31.365Z",
   "_savedBy": "ebram"
 }
