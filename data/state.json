@@ -34,7 +34,7 @@
           "owner": "sherry",
           "deadline": "قبل 20 مايو",
           "notes": "لو محتاج تعديلات سيبي وقت كافي",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
