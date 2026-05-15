@@ -167,7 +167,7 @@
           "deadline": "أول أسبوع يونيو",
           "notes": "قارن السعر والوقت والـ references",
           "completed": false,
-          "private": false
+          "private": true
         },
         {
           "id": "t86",
@@ -1010,6 +1010,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-15T19:52:34.480Z",
+  "_savedAt": "2026-05-15T19:52:47.503Z",
   "_savedBy": "ebram"
 }
