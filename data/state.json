@@ -255,15 +255,6 @@
           "private": false
         },
         {
-          "id": "t28",
-          "title": "حجز DJ أو فرقة موسيقية",
-          "owner": "ebram",
-          "deadline": "يوليو",
-          "notes": "اسأل عن قائمة الأغاني الممنوعة في الكنيسة",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t29",
           "title": "حجز البوفيه/الكاترينج",
           "owner": "both",
@@ -1010,6 +1001,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-15T19:54:24.919Z",
+  "_savedAt": "2026-05-15T19:55:10.493Z",
   "_savedBy": "ebram"
 }
