@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ebram & Sherry — Wedding Roadmap</title>
+  <meta name="description" content="Our journey to January 7, 2027" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&family=Amiri:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- LOGIN SCREEN -->
+  <div class="login-screen" id="loginScreen" hidden>
+    <div class="login-card">
+      <div class="login-emoji">💍</div>
+      <h1 class="login-title">
+        <span class="en">Welcome to our journey</span>
+        <span class="ar">أهلاً بيك في رحلتنا</span>
+      </h1>
+      <p class="login-sub">
+        <span class="en">Who's signing in?</span>
+        <span class="ar">مين معانا؟</span>
+      </p>
+      <div class="login-options">
+        <button class="login-option" data-user="ebram">
+          <img src="assets/ebram.jpg" class="avatar login-avatar ebram" alt="Ebram" />
+          <span class="login-option-text">
+            <span class="login-option-name">I'm Ebram</span>
+            <span class="login-option-ar">ابرام</span>
+          </span>
+          <span class="login-option-lock">🔒</span>
+        </button>
+        <button class="login-option" data-user="sherry">
+          <img src="assets/sherry.jpg" class="avatar login-avatar sherry" alt="Sherry" />
+          <span class="login-option-text">
+            <span class="login-option-name">I'm Sherry</span>
+            <span class="login-option-ar">شيري</span>
+          </span>
+          <span class="login-option-lock">🔒</span>
+        </button>
+        <button class="login-option viewer" data-user="viewer">
+          <span class="login-option-emoji">👁️</span>
+          <span class="login-option-text">
+            <span class="login-option-name">View only</span>
+            <span class="login-option-ar">للمشاهدة فقط</span>
+          </span>
+        </button>
+      </div>
+      <p class="login-hint">
+        <span class="en">Parents and family — use "View only"</span>
+        <span class="ar">الأهل والعيلة — اختاروا "للمشاهدة فقط"</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- USER BADGE -->
+  <div class="user-badge" id="userBadge" hidden></div>
+
+  <!-- DECORATIVE BACKGROUND -->
+  <div class="bg-decoration" aria-hidden="true">
+    <span class="petal petal-1">✿</span>
+    <span class="petal petal-2">❀</span>
+    <span class="petal petal-3">✿</span>
+    <span class="petal petal-4">❀</span>
+    <span class="petal petal-5">✿</span>
+  </div>
+
+  <!-- APP CONTAINER -->
+  <div id="app" hidden>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-couple" aria-hidden="true">
+        <img src="assets/ebram.jpg" class="avatar avatar-hero ebram" alt="Ebram" />
+        <span class="hero-heart">💕</span>
+        <img src="assets/sherry.jpg" class="avatar avatar-hero sherry" alt="Sherry" />
+      </div>
+
+      <h1 class="hero-title">
+        <span class="en">Our Wedding Roadmap</span>
+        <span class="ar">خريطة طريقنا للفرح</span>
+      </h1>
+
+      <div class="hero-names">
+        <span class="name">Ebram</span>
+        <span class="amp">&</span>
+        <span class="name">Sherry</span>
+      </div>
+      <div class="hero-names-ar">إبرام &amp; شيري</div>
+
+      <div class="hero-dates">
+        <div class="date-box">
+          <div class="date-icon">💐</div>
+          <div class="date-label">
+            <span class="en">Engagement</span>
+            <span class="ar">الخطوبة</span>
+          </div>
+          <div class="date-value">May 22, 2026</div>
+          <div class="date-countdown" id="engagementCountdown"></div>
+        </div>
+
+        <div class="date-divider" aria-hidden="true">
+          <svg viewBox="0 0 60 20" width="60" height="20">
+            <path d="M0 10 L24 10 M36 10 L60 10" stroke="currentColor" stroke-width="1.5" fill="none" />
+            <text x="30" y="15" text-anchor="middle" font-size="14">♥</text>
+          </svg>
+        </div>
+
+        <div class="date-box highlight">
+          <div class="date-icon">💒</div>
+          <div class="date-label">
+            <span class="en">Wedding Day</span>
+            <span class="ar">يوم الفرح</span>
+          </div>
+          <div class="date-value">Jan 7, 2027</div>
+          <div class="date-countdown" id="weddingCountdown"></div>
+        </div>
+      </div>
+
+      <div class="hero-progress">
+        <div class="progress-label">
+          <span>
+            <span class="en">Overall Progress</span>
+            <span class="ar">التقدم الإجمالي</span>
+          </span>
+          <span class="progress-stat" id="overallStats">0 / 83 · 0%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="overallProgress"></div>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#roadmap" class="btn-link">
+          <span class="en">See the Roadmap</span>
+          <span class="ar">شوف خريطة الطريق</span>
+          <span class="arrow">↓</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- VISUAL ROADMAP -->
+  <section class="roadmap-section" id="roadmap">
+    <div class="section-header">
+      <div class="section-eyebrow">— The Journey —</div>
+      <h2 class="section-title">
+        <span class="en">Our Path Together</span>
+        <span class="ar">طريقنا سوا</span>
+      </h2>
+      <p class="section-sub">
+        <span class="en">Every milestone brings us closer to "I do"</span>
+        <span class="ar">كل خطوة تقربنا أكتر من بعض</span>
+      </p>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="stats-strip">
+      <div class="stat-card">
+        <div class="stat-num" id="statTotal">0</div>
+        <div class="stat-label">
+          <span class="en">Completed</span>
+          <span class="ar">منجَز</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="statEbram">0</div>
+        <div class="stat-label">
+          <span class="en">Ebram's done</span>
+          <span class="ar">من ابرام</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="statSherry">0</div>
+        <div class="stat-label">
+          <span class="en">Sherry's done</span>
+          <span class="ar">من شيري</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="statBoth">0</div>
+        <div class="stat-label">
+          <span class="en">Together</span>
+          <span class="ar">سوا</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Visual Roadmap -->
+    <div class="roadmap" id="roadmapMilestones">
+      <!-- Rendered by JS -->
+    </div>
+  </section>
+
+  <!-- DETAILED TASKS -->
+  <section class="tasks-section" id="tasks">
+    <div class="section-header">
+      <div class="section-eyebrow">— Detailed Plan —</div>
+      <h2 class="section-title">
+        <span class="en">All Tasks</span>
+        <span class="ar">التاسكات بالتفصيل</span>
+      </h2>
+      <p class="section-sub">
+        <span class="en">Click a phase to expand. Check off as you complete.</span>
+        <span class="ar">دوس على المرحلة لتتفتح، وعلّم على اللي خلصته</span>
+      </p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">
+        <span class="en">All</span> · <span class="ar">الكل</span>
+      </button>
+      <button class="filter-btn" data-filter="ebram">
+        <span class="en">Ebram</span> · <span class="ar">ابرام</span>
+      </button>
+      <button class="filter-btn" data-filter="sherry">
+        <span class="en">Sherry</span> · <span class="ar">شيري</span>
+      </button>
+      <button class="filter-btn" data-filter="both">
+        <span class="en">Together</span> · <span class="ar">الاتنين</span>
+      </button>
+      <button class="filter-btn" data-filter="critical">
+        <span class="en">⚠️ Critical</span> · <span class="ar">⚠️ حرج</span>
+      </button>
+      <button class="filter-btn" data-filter="pending">
+        <span class="en">Pending</span> · <span class="ar">متبقي</span>
+      </button>
+    </div>
+
+    <div class="phases" id="phasesContainer">
+      <!-- Rendered by JS -->
+    </div>
+  </section>
+
+  <!-- ACTIONS / FOOTER -->
+  <footer class="footer">
+    <div class="footer-actions">
+      <button class="btn btn-primary" id="addTaskBtn">
+        <span class="en">+ Add Task</span>
+        <span class="ar">+ ضيف تاسك</span>
+      </button>
+      <button class="btn btn-secondary" id="exportBtn">
+        <span class="en">⬇ Export</span>
+        <span class="ar">⬇ تصدير</span>
+      </button>
+      <button class="btn btn-secondary" id="importBtn">
+        <span class="en">⬆ Import</span>
+        <span class="ar">⬆ استيراد</span>
+      </button>
+      <button class="btn btn-danger" id="resetBtn">
+        <span class="en">⟲ Reset</span>
+        <span class="ar">⟲ إعادة</span>
+      </button>
+      <input type="file" id="importFile" accept=".json" hidden />
+    </div>
+    <p class="footer-text">
+      Built with love for Ebram &amp; Sherry · صُنع بحب لإبرام وشيري 💕
+    </p>
+  </footer>
+  </div><!-- /#app -->
+
+  <!-- MODAL: Add / Edit Task -->
+  <div class="modal" id="taskModal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-content">
+      <button class="modal-close" data-close aria-label="Close">×</button>
+      <h3 id="modalTitle">
+        <span class="en">Add Task</span>
+        <span class="ar">ضيف تاسك</span>
+      </h3>
+      <form id="taskForm">
+        <input type="hidden" id="taskEditId" />
+        <label class="form-field">
+          <span class="field-label">
+            <span class="en">Title</span> · <span class="ar">العنوان</span>
+          </span>
+          <input type="text" id="taskTitle" required />
+        </label>
+        <label class="form-field">
+          <span class="field-label">
+            <span class="en">Phase</span> · <span class="ar">المرحلة</span>
+          </span>
+          <select id="taskPhase"></select>
+        </label>
+        <label class="form-field">
+          <span class="field-label">
+            <span class="en">Owner</span> · <span class="ar">المسؤول</span>
+          </span>
+          <select id="taskOwner">
+            <option value="both">Together · الاتنين</option>
+            <option value="ebram">Ebram · ابرام</option>
+            <option value="sherry">Sherry · شيري</option>
+          </select>
+        </label>
+        <label class="form-field">
+          <span class="field-label">
+            <span class="en">Deadline</span> · <span class="ar">الميعاد</span>
+          </span>
+          <input type="text" id="taskDeadline" placeholder="e.g. June 2026" />
+        </label>
+        <label class="form-field">
+          <span class="field-label">
+            <span class="en">Notes</span> · <span class="ar">ملاحظات</span>
+          </span>
+          <textarea id="taskNotes" rows="3"></textarea>
+        </label>
+        <label class="form-field checkbox-field">
+          <input type="checkbox" id="taskPrivate" />
+          <span class="field-label">
+            🔒 <span class="en">Private (hidden from viewers)</span> · <span class="ar">خاص (مخفي عن الأهل)</span>
+          </span>
+        </label>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" data-close>
+            <span class="en">Cancel</span>
+            <span class="ar">إلغاء</span>
+          </button>
+          <button type="submit" class="btn btn-primary">
+            <span class="en">Save</span>
+            <span class="ar">حفظ</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Confetti container -->
+  <div id="confettiRoot" aria-hidden="true"></div>
+
+  <script src="data/tasks.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
