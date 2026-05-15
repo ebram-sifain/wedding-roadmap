@@ -74,15 +74,6 @@
           "private": false
         },
         {
-          "id": "t10",
-          "title": "كوافير ومكياج للخطوبة",
-          "owner": "sherry",
-          "deadline": "احجزي دلوقتي",
-          "notes": "الجمعة مزدحم، الميعاد لازم يتثبت",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t11",
           "title": "تنسيق ملابس الأمهات",
           "owner": "both",
