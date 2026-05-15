@@ -74,15 +74,6 @@
           "private": false
         },
         {
-          "id": "t7",
-          "title": "Guest list للخطوبة",
-          "owner": "both",
-          "deadline": "قبل 17 مايو",
-          "notes": "حدد العدد عشان كل حاجة تانية",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t8",
           "title": "تأكيد الدعوات للأهل والمقربين",
           "owner": "both",
