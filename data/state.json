@@ -916,19 +916,10 @@
           "notes": "تابع التسليم",
           "completed": false,
           "private": false
-        },
-        {
-          "id": "t106",
-          "title": "تحديث عقد الإيجار/التأمين بالاسم الجديد لشيري",
-          "owner": "both",
-          "deadline": "بعد القسيمة",
-          "notes": "بعد ما البطاقة تتغير، حدّث كل العقود",
-          "completed": false,
-          "private": false
         }
       ]
     }
   ],
-  "_savedAt": "2026-05-15T20:13:50.714Z",
+  "_savedAt": "2026-05-15T20:14:08.103Z",
   "_savedBy": "ebram"
 }
