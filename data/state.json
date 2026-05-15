@@ -83,16 +83,6 @@
           "private": false
         },
         {
-          "id": "t84",
-          "title": "شراء الشبكة (ذهب العروسة)",
-          "owner": "ebram",
-          "deadline": "قبل الخطوبة",
-          "notes": "تقليد أساسي: حلق + سلسلة + غويشة على الأقل. اتفقي مع أمها على الميل",
-          "critical": true,
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t85",
           "title": "تجهيز خاتم شبكة لأم العروسة",
           "owner": "ebram",
@@ -919,6 +909,16 @@
           "owner": "ebram",
           "deadline": "6 يناير",
           "notes": "حدد ساعة الاستلام مع المصدر، حد يستلم",
+          "completed": false,
+          "private": false
+        },
+        {
+          "id": "t84",
+          "title": "شراء الشبكة (ذهب العروسة)",
+          "owner": "ebram",
+          "deadline": "قبل الخطوبة",
+          "notes": "تقليد أساسي: حلق + سلسلة + غويشة على الأقل. اتفقي مع أمها على الميل",
+          "critical": true,
           "completed": false,
           "private": false
         }
