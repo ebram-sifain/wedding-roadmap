@@ -143,15 +143,6 @@
           "private": false
         },
         {
-          "id": "t18",
-          "title": "فتح Notion/Google Sheet مشترك",
-          "owner": "ebram",
-          "deadline": "قبل 25 مايو",
-          "notes": "للمتابعة المشتركة مع شيري",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t19",
           "title": "إمضاء عقد الإيجار/الشراء",
           "owner": "ebram",
@@ -1019,6 +1010,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-15T19:51:01.441Z",
+  "_savedAt": "2026-05-15T19:52:34.480Z",
   "_savedBy": "ebram"
 }
