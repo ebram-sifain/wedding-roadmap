@@ -505,25 +505,28 @@ body.viewer-mode .filter-bar { /* keep filters useful for viewers */ }
   position: absolute;
   top: 8px;
   right: 8px;
-  background: var(--bg-soft);
-  border: 1px solid var(--line);
-  color: var(--text-soft);
-  width: 28px;
-  height: 28px;
+  background: var(--rose-deep);
+  border: 2px solid white;
+  color: white;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   cursor: pointer;
   display: none;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 14px;
   transition: all 0.2s;
+  box-shadow: 0 3px 8px rgba(201, 123, 132, 0.35);
+  z-index: 5;
 }
-body.editor-mode .date-box:hover .date-edit-btn,
-body.editor-mode .date-edit-btn:focus { display: flex; }
+/* Always visible in editor mode — make the affordance obvious */
+body.editor-mode .date-edit-btn { display: flex; }
 body.editor-mode .date-box { cursor: pointer; }
-/* On touch devices :hover is unreliable — always show the edit handle */
-@media (hover: none) {
-  body.editor-mode .date-edit-btn { display: flex; }
+body.editor-mode .date-box:hover .date-edit-btn { transform: scale(1.1); }
+.date-edit-btn:hover {
+  background: var(--navy);
+  border-color: var(--gold);
 }
 .date-edit-btn:hover {
   background: var(--rose-deep);
