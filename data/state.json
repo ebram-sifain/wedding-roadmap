@@ -83,15 +83,6 @@
           "private": false
         },
         {
-          "id": "t12",
-          "title": "عربية الطلعة",
-          "owner": "ebram",
-          "deadline": "قبل 20 مايو",
-          "notes": "لو مؤجرة، اتأكد من حجزها",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t13",
           "title": "شيلة ورد لأم العروسة",
           "owner": "ebram",
