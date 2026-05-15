@@ -594,15 +594,6 @@
           "private": false
         },
         {
-          "id": "t96",
-          "title": "نقل اشتراك الغاز",
-          "owner": "ebram",
-          "deadline": "نوفمبر",
-          "notes": "نفس الكلام",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t97",
           "title": "اشتراك إنترنت + دش",
           "owner": "ebram",
@@ -965,6 +956,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-15T20:08:51.261Z",
+  "_savedAt": "2026-05-15T20:08:55.536Z",
   "_savedBy": "ebram"
 }
