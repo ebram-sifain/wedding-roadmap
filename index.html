@@ -98,14 +98,15 @@
       <div class="hero-names-ar">إبرام &amp; شيري</div>
 
       <div class="hero-dates">
-        <div class="date-box">
+        <div class="date-box" data-edit-date="engagement">
           <div class="date-icon">💐</div>
           <div class="date-label">
             <span class="en">Engagement</span>
             <span class="ar">الخطوبة</span>
           </div>
-          <div class="date-value">May 22, 2026</div>
+          <div class="date-value" id="engagementDateText">May 22, 2026</div>
           <div class="date-countdown" id="engagementCountdown"></div>
+          <button class="date-edit-btn" type="button" data-edit-date="engagement" title="Edit · تعديل">✎</button>
         </div>
 
         <div class="date-divider" aria-hidden="true">
@@ -115,14 +116,15 @@
           </svg>
         </div>
 
-        <div class="date-box highlight">
+        <div class="date-box highlight" data-edit-date="wedding">
           <div class="date-icon">💒</div>
           <div class="date-label">
             <span class="en">Wedding Day</span>
             <span class="ar">يوم الفرح</span>
           </div>
-          <div class="date-value">Jan 7, 2027</div>
+          <div class="date-value" id="weddingDateText">Jan 7, 2027</div>
           <div class="date-countdown" id="weddingCountdown"></div>
+          <button class="date-edit-btn" type="button" data-edit-date="wedding" title="Edit · تعديل">✎</button>
         </div>
       </div>
 
@@ -321,6 +323,46 @@
         </label>
         <div class="modal-actions">
           <button type="button" class="btn btn-secondary" data-close>
+            <span class="en">Cancel</span>
+            <span class="ar">إلغاء</span>
+          </button>
+          <button type="submit" class="btn btn-primary">
+            <span class="en">Save</span>
+            <span class="ar">حفظ</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Edit event dates -->
+  <div class="modal" id="editDatesModal" hidden>
+    <div class="modal-backdrop" data-close-dates></div>
+    <div class="modal-content">
+      <button class="modal-close" data-close-dates aria-label="Close">×</button>
+      <h3>
+        <span class="en">Edit Event Dates</span>
+        <span class="ar">تعديل المواعيد الرئيسية</span>
+      </h3>
+      <form id="editDatesForm">
+        <label class="form-field">
+          <span class="field-label">
+            💐 <span class="en">Engagement</span> · <span class="ar">الخطوبة</span>
+          </span>
+          <input type="date" id="editEngagementDate" required />
+        </label>
+        <label class="form-field">
+          <span class="field-label">
+            💒 <span class="en">Wedding Day</span> · <span class="ar">يوم الفرح</span>
+          </span>
+          <input type="date" id="editWeddingDate" required />
+        </label>
+        <p class="form-note">
+          <span class="en">Changes update the countdown, the milestones, and sync to Sherry's view.</span>
+          <span class="ar">التغيير بيتحدث في الـ countdown، الـ milestones، وبيوصل لشيري تلقائياً.</span>
+        </p>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" data-close-dates>
             <span class="en">Cancel</span>
             <span class="ar">إلغاء</span>
           </button>

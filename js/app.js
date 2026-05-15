@@ -641,6 +641,22 @@ function updateCountdown() {
   };
   setText('engagementCountdown', state.events.engagement);
   setText('weddingCountdown', state.events.wedding);
+
+  renderHeroDates();
+}
+
+function formatLongDate(isoDate) {
+  if (!isoDate) return '';
+  const d = new Date(isoDate);
+  if (isNaN(d)) return isoDate;
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function renderHeroDates() {
+  const eng = document.getElementById('engagementDateText');
+  const wed = document.getElementById('weddingDateText');
+  if (eng && state.events.engagement) eng.textContent = formatLongDate(state.events.engagement);
+  if (wed && state.events.wedding)    wed.textContent = formatLongDate(state.events.wedding);
 }
 
 /* ============================================================
@@ -710,6 +726,41 @@ function attachTaskDelegation() {
     else if (actionName === 'delete') deleteTask(taskId, phaseId);
     else if (actionName === 'toggle-private') togglePrivate(taskId, phaseId);
   });
+}
+
+function openEditDatesModal(focusField) {
+  if (!isEditor()) return;
+  const modal = document.getElementById('editDatesModal');
+  document.getElementById('editEngagementDate').value = state.events.engagement || '';
+  document.getElementById('editWeddingDate').value = state.events.wedding || '';
+  modal.hidden = false;
+  setTimeout(() => {
+    const focusId = focusField === 'wedding' ? 'editWeddingDate' : 'editEngagementDate';
+    const f = document.getElementById(focusId);
+    if (f) f.focus();
+  }, 80);
+}
+
+function saveEventDates(e) {
+  e.preventDefault();
+  if (!isEditor()) return;
+  const eng = document.getElementById('editEngagementDate').value;
+  const wed = document.getElementById('editWeddingDate').value;
+  if (!eng || !wed) return;
+
+  state.events.engagement = eng;
+  state.events.wedding = wed;
+
+  // Sync the dateRange of the engagement & wedding milestone phases to match
+  const phase1 = state.phases.find(p => p.id === 'phase-1');
+  if (phase1) phase1.dateRange = formatLongDate(eng);
+  const phase8 = state.phases.find(p => p.id === 'phase-8');
+  if (phase8) phase8.dateRange = formatLongDate(wed);
+
+  saveState();
+  document.getElementById('editDatesModal').hidden = true;
+  render();
+  updateCountdown();
 }
 
 function togglePrivate(taskId, phaseId) {
@@ -919,6 +970,21 @@ function triggerConfetti() {
 function attachListeners() {
   attachTaskDelegation();
 
+  // Edit event dates (engagement / wedding)
+  document.querySelectorAll('[data-edit-date]').forEach(el => {
+    el.addEventListener('click', e => {
+      if (!isEditor()) return;
+      if (el.tagName === 'BUTTON') e.stopPropagation();
+      openEditDatesModal(el.dataset.editDate);
+    });
+  });
+  document.querySelectorAll('[data-close-dates]').forEach(el => {
+    el.addEventListener('click', () => {
+      document.getElementById('editDatesModal').hidden = true;
+    });
+  });
+  document.getElementById('editDatesForm').addEventListener('submit', saveEventDates);
+
   // Click sync status to set/reset GitHub token
   const sync = document.getElementById('syncStatus');
   if (sync) {
@@ -957,7 +1023,11 @@ function attachListeners() {
   document.getElementById('resetBtn').addEventListener('click', resetAll);
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Escape') {
+      closeModal();
+      const datesModal = document.getElementById('editDatesModal');
+      if (datesModal) datesModal.hidden = true;
+    }
   });
 
   window.addEventListener('resize', () => setTimeout(updateRoadmapFill, 200));
