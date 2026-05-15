@@ -32,13 +32,14 @@ const REPO_OWNER = 'ebram-sifain';
 const REPO_NAME = 'wedding-roadmap';
 const STATE_FILE_PATH = 'data/state.json';
 const STATE_BRANCH = 'main';
-const SYNC_DEBOUNCE_MS = 1500;
 
 let state = null;
 let activeFilter = 'all';
 let currentUser = null;
-let syncTimer = null;
-let stateSha = null;
+
+// Save queue: rapid changes coalesce into a single pending save.
+let saveQueue = Promise.resolve();
+let savePending = false;
 
 /* ============================================================
    INIT
@@ -177,28 +178,46 @@ function isEditor() {
 }
 
 async function loadState() {
-  // Try cloud first — shared between Ebram & Sherry
-  const remote = await fetchRemoteState();
+  const [remote, local] = await Promise.all([
+    fetchRemoteState(),
+    Promise.resolve(readLocalState())
+  ]);
+
+  // Both exist — keep whichever was saved later. If local is newer, schedule
+  // a re-sync so the remote catches up (handles "user edited then refreshed
+  // before the save flushed").
+  if (remote && local) {
+    const remoteTime = new Date(remote._savedAt || 0).getTime();
+    const localTime  = new Date(local._savedAt  || 0).getTime();
+    if (localTime > remoteTime) {
+      console.info('Local state is newer than remote — keeping local & re-pushing');
+      setTimeout(() => { if (isEditor()) scheduleRemoteSave(); }, 200);
+      return migrate(local);
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(remote));
+    return migrate(remote);
+  }
   if (remote) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(remote));
     return migrate(remote);
   }
+  if (local) return migrate(local);
 
-  // Fall back to local cache
-  const saved = localStorage.getItem(STORAGE_KEY);
-  if (saved) {
-    try {
-      const parsed = JSON.parse(saved);
-      if (parsed && parsed.phases) return migrate(parsed);
-    } catch (e) {
-      console.warn('Corrupt saved state, reloading from default data');
-    }
-  }
-
-  // Last resort: the seed shipped in tasks.js
+  // Seed fallback
   if (!window.WEDDING_DATA) throw new Error('WEDDING_DATA not loaded');
-  const fresh = JSON.parse(JSON.stringify(window.WEDDING_DATA));
-  return migrate(fresh);
+  return migrate(JSON.parse(JSON.stringify(window.WEDDING_DATA)));
+}
+
+function readLocalState() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (!saved) return null;
+  try {
+    const parsed = JSON.parse(saved);
+    if (parsed && parsed.phases) return parsed;
+  } catch (e) {
+    console.warn('Corrupt local state');
+  }
+  return null;
 }
 
 async function fetchRemoteState() {
@@ -232,6 +251,9 @@ function visibleTasks(phase) {
 }
 
 function saveState() {
+  // Timestamp every save so loadState can pick the freshest of local vs remote.
+  state._savedAt = new Date().toISOString();
+  state._savedBy = currentUser ? currentUser.key : 'unknown';
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   scheduleRemoteSave();
 }
@@ -242,9 +264,16 @@ function scheduleRemoteSave() {
     setSyncStatus('no-token');
     return;
   }
-  clearTimeout(syncTimer);
+  // Mark a save as needed and chain it after the current one (if any).
+  // Multiple rapid changes coalesce: only one save fires after the in-flight
+  // one finishes, but it always uses the LATEST state.
+  savePending = true;
   setSyncStatus('pending');
-  syncTimer = setTimeout(saveRemoteState, SYNC_DEBOUNCE_MS);
+  saveQueue = saveQueue.then(async () => {
+    if (!savePending) return;
+    savePending = false;
+    await saveRemoteState();
+  });
 }
 
 async function saveRemoteState() {
@@ -253,30 +282,29 @@ async function saveRemoteState() {
   setSyncStatus('syncing');
 
   try {
-    // Ensure we have the latest SHA (required when updating an existing file)
-    if (!stateSha) {
-      const head = await fetch(
-        `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${STATE_FILE_PATH}?ref=${STATE_BRANCH}&cb=${Date.now()}`,
-        { headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' } }
-      );
-      if (head.ok) {
-        const data = await head.json();
-        stateSha = data.sha;
-      } else if (head.status === 401 || head.status === 403) {
-        localStorage.removeItem(TOKEN_KEY);
-        setSyncStatus('auth-failed');
-        return;
-      }
+    // Always fetch the latest SHA before PUT. Cheaper than handling 409s and
+    // ensures last-write-wins works cleanly when both Ebram and Sherry edit.
+    let sha = null;
+    const head = await fetch(
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${STATE_FILE_PATH}?ref=${STATE_BRANCH}&cb=${Date.now()}`,
+      { headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' } }
+    );
+    if (head.ok) {
+      sha = (await head.json()).sha;
+    } else if (head.status === 401 || head.status === 403) {
+      localStorage.removeItem(TOKEN_KEY);
+      setSyncStatus('auth-failed');
+      return;
     }
+    // head.status === 404 means the file doesn't exist yet — that's fine, we'll create it.
 
-    const json = JSON.stringify(state, null, 2);
-    const content = utf8ToBase64(json);
+    const content = utf8ToBase64(JSON.stringify(state, null, 2));
     const body = {
-      message: `Update state by ${currentUser.name}`,
+      message: `Update by ${currentUser.name}`,
       content,
       branch: STATE_BRANCH
     };
-    if (stateSha) body.sha = stateSha;
+    if (sha) body.sha = sha;
 
     const res = await fetch(
       `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${STATE_FILE_PATH}`,
@@ -292,16 +320,12 @@ async function saveRemoteState() {
     );
 
     if (res.ok) {
-      const result = await res.json();
-      stateSha = result.content.sha;
       setSyncStatus('saved');
-    } else if (res.status === 409 || res.status === 422) {
-      // Conflict: someone else changed it. Drop our cached SHA so we re-fetch next time.
-      stateSha = null;
-      setSyncStatus('conflict');
     } else if (res.status === 401 || res.status === 403) {
       localStorage.removeItem(TOKEN_KEY);
       setSyncStatus('auth-failed');
+    } else if (res.status === 409 || res.status === 422) {
+      setSyncStatus('conflict');
     } else {
       setSyncStatus('error');
     }
@@ -905,7 +929,6 @@ function attachListeners() {
         const token = prompt('Paste your GitHub token · الصق التوكن:');
         if (token && token.trim()) {
           localStorage.setItem(TOKEN_KEY, token.trim());
-          stateSha = null;
           scheduleRemoteSave();
         }
       }
@@ -938,6 +961,14 @@ function attachListeners() {
   });
 
   window.addEventListener('resize', () => setTimeout(updateRoadmapFill, 200));
+
+  // Warn user if they try to leave while a save is pending — keeps recent edits safe.
+  window.addEventListener('beforeunload', e => {
+    if (savePending && isEditor()) {
+      e.preventDefault();
+      e.returnValue = '';
+    }
+  });
 }
 
 /* ============================================================
