@@ -83,15 +83,6 @@
           "private": false
         },
         {
-          "id": "t13",
-          "title": "شيلة ورد لأم العروسة",
-          "owner": "ebram",
-          "deadline": "يوم 22 مايو",
-          "notes": "بوكيه أصغر، تقليد جميل",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t84",
           "title": "شراء الشبكة (ذهب العروسة)",
           "owner": "ebram",
