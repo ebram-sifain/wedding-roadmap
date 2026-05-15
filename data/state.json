@@ -26,7 +26,7 @@
           "deadline": "ASAP",
           "notes": "أهم خطوة قبل اي صرف. حدد سقف لكل بند",
           "completed": false,
-          "private": false
+          "private": true
         },
         {
           "id": "t2",
