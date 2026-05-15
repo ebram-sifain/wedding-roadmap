@@ -74,15 +74,6 @@
           "private": false
         },
         {
-          "id": "t9",
-          "title": "حجز مصور الخطوبة",
-          "owner": "ebram",
-          "deadline": "قبل 19 مايو",
-          "notes": "فكر تحجز نفس المصور للفرح → discount",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t10",
           "title": "كوافير ومكياج للخطوبة",
           "owner": "sherry",
