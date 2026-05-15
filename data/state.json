@@ -121,7 +121,7 @@
           "deadline": "قبل 31 مايو",
           "notes": "فرح/شهر عسل/شقة/عفش/أجهزة + 15% احتياطي",
           "completed": false,
-          "private": false
+          "private": true
         },
         {
           "id": "t16",
@@ -1019,6 +1019,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-15T19:50:11.191Z",
+  "_savedAt": "2026-05-15T19:50:23.877Z",
   "_savedBy": "ebram"
 }
