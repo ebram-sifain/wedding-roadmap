@@ -70,7 +70,7 @@
           "owner": "ebram",
           "deadline": "قبل 18 مايو",
           "notes": "احجز deposit، أكد عدد الناس",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -920,6 +920,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-15T20:33:42.982Z",
+  "_savedAt": "2026-05-17T19:23:55.492Z",
   "_savedBy": "ebram"
 }
