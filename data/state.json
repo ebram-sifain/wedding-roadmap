@@ -6,7 +6,7 @@
     "brideEn": "Sherry"
   },
   "events": {
-    "engagement": "2026-05-22",
+    "engagement": "2026-05-24",
     "wedding": "2027-01-08"
   },
   "phases": [
@@ -88,7 +88,7 @@
       "id": "phase-1",
       "title": "يوم الخطوبة",
       "titleEn": "Engagement Day",
-      "dateRange": "22 May 2026",
+      "dateRange": "24 May 2026",
       "icon": "🎉",
       "color": "#F4C2C2",
       "description": "Enjoy the day — you earned it",
@@ -920,6 +920,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-17T19:23:55.492Z",
+  "_savedAt": "2026-05-23T07:23:02.066Z",
   "_savedBy": "ebram"
 }
