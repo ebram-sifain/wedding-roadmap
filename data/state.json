@@ -79,7 +79,7 @@
           "owner": "both",
           "deadline": "قبل 19 مايو",
           "notes": "تنسيق الألوان مع الفستان",
-          "completed": false,
+          "completed": true,
           "private": false
         }
       ]
@@ -920,6 +920,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-23T07:23:02.066Z",
-  "_savedBy": "ebram"
+  "_savedAt": "2026-05-25T17:47:50.000Z",
+  "_savedBy": "sherry"
 }
