@@ -43,7 +43,7 @@
           "owner": "ebram",
           "deadline": "قبل 20 مايو",
           "notes": "جرب وخد البروفة بدري",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -920,6 +920,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-25T17:47:50.000Z",
+  "_savedAt": "2026-05-25T17:47:53.932Z",
   "_savedBy": "sherry"
 }
