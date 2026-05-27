@@ -25,7 +25,7 @@
           "owner": "both",
           "deadline": "ASAP",
           "notes": "أهم خطوة قبل اي صرف. حدد سقف لكل بند",
-          "completed": false,
+          "completed": true,
           "private": true
         },
         {
@@ -920,6 +920,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-27T21:03:34.995Z",
+  "_savedAt": "2026-05-27T21:03:44.635Z",
   "_savedBy": "ebram"
 }
