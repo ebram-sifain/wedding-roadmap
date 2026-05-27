@@ -61,7 +61,7 @@
           "owner": "ebram",
           "deadline": "قبل 19 مايو",
           "notes": "اتفق على اللون يطابق فستانها",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -920,6 +920,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-27T21:03:24.275Z",
+  "_savedAt": "2026-05-27T21:03:34.995Z",
   "_savedBy": "ebram"
 }
