@@ -88,7 +88,7 @@
           "owner": "both",
           "deadline": "",
           "notes": "",
-          "completed": false,
+          "completed": true,
           "private": false,
           "custom": true
         }
@@ -930,6 +930,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-27T21:04:10.056Z",
+  "_savedAt": "2026-05-27T21:04:17.872Z",
   "_savedBy": "ebram"
 }
