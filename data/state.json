@@ -521,6 +521,16 @@
           "completed": false,
           "private": false,
           "custom": true
+        },
+        {
+          "id": "custom-1780181927048-vpd5",
+          "title": "شراء ملابس",
+          "owner": "ebram",
+          "deadline": "",
+          "notes": "",
+          "completed": false,
+          "private": false,
+          "custom": true
         }
       ]
     },
@@ -950,6 +960,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-05-30T22:58:28.605Z",
+  "_savedAt": "2026-05-30T22:58:47.048Z",
   "_savedBy": "ebram"
 }
