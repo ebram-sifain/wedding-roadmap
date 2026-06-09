@@ -482,7 +482,7 @@
           "owner": "both",
           "deadline": "أكتوبر",
           "notes": "تلاجة، غسالة، بوتاجاز، فرن، ميكروويف، تكييفات، سخان، شفاط",
-          "completed": false,
+          "completed": true,
           "private": true
         },
         {
@@ -960,6 +960,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-06-09T12:51:09.956Z",
+  "_savedAt": "2026-06-09T12:51:12.282Z",
   "_savedBy": "ebram"
 }
