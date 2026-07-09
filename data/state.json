@@ -464,7 +464,7 @@
           "owner": "both",
           "deadline": "سبتمبر",
           "notes": "للمناسبات والضيوف. غير الطاقم العادي",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -960,6 +960,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-09T07:17:53.941Z",
+  "_savedAt": "2026-07-09T07:18:01.540Z",
   "_savedBy": "ebram"
 }
