@@ -177,7 +177,7 @@
           "owner": "ebram",
           "deadline": "بعد التوقيع مباشرة",
           "notes": "لازمة قبل اي شراء عفش",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -960,6 +960,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-09T07:16:25.268Z",
+  "_savedAt": "2026-07-09T07:16:34.034Z",
   "_savedBy": "ebram"
 }
