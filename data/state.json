@@ -419,7 +419,7 @@
           "owner": "both",
           "deadline": "سبتمبر",
           "notes": "ممكن تأجيلها بعد الفرح لو الميزانية ضيقة",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -960,6 +960,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-09T07:17:51.057Z",
+  "_savedAt": "2026-07-09T07:17:53.941Z",
   "_savedBy": "ebram"
 }
