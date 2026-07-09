@@ -410,7 +410,7 @@
           "owner": "both",
           "deadline": "سبتمبر",
           "notes": "يطابق الانتريه",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -960,6 +960,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-09T07:17:48.370Z",
+  "_savedAt": "2026-07-09T07:17:51.057Z",
   "_savedBy": "ebram"
 }
