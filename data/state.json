@@ -140,7 +140,7 @@
           "owner": "both",
           "deadline": "قبل 31 مايو",
           "notes": "فرح/شهر عسل/شقة/عفش/أجهزة + 15% احتياطي",
-          "completed": false,
+          "completed": true,
           "private": true
         },
         {
@@ -960,6 +960,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-09T07:16:21.965Z",
+  "_savedAt": "2026-07-09T07:16:25.268Z",
   "_savedBy": "ebram"
 }
