@@ -131,7 +131,7 @@
           "deadline": "بحد أقصى 5 يونيو",
           "notes": "⚠️ الـ critical path — كل حاجة بعدها متوقفة عليها",
           "critical": true,
-          "completed": false,
+          "completed": true,
           "private": true
         },
         {
@@ -960,6 +960,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-06-09T12:51:24.039Z",
+  "_savedAt": "2026-07-09T07:16:21.965Z",
   "_savedBy": "ebram"
 }
