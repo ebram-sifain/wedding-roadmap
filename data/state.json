@@ -580,15 +580,6 @@
           "private": false
         },
         {
-          "id": "t57",
-          "title": "طلب تورتة الفرح",
-          "owner": "both",
-          "deadline": "نوفمبر",
-          "notes": "tasting قبل ما تثبت الطعم",
-          "completed": false,
-          "private": true
-        },
-        {
           "id": "t58",
           "title": "عمل التحاليل الطبية للكنيسة",
           "owner": "both",
@@ -942,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-11T10:43:25.073Z",
+  "_savedAt": "2026-07-11T10:43:28.339Z",
   "_savedBy": "sherry"
 }
