@@ -234,7 +234,7 @@
           "deadline": "بمجرد ما تبدأ الجلسات",
           "notes": "الكنيسة بتطلبها كشرط للزواج، ممكن ٦ شهور",
           "critical": true,
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -365,15 +365,6 @@
           "owner": "ebram",
           "deadline": "سبتمبر",
           "notes": "اتفق على الديكور",
-          "completed": false,
-          "private": false
-        },
-        {
-          "id": "t38",
-          "title": "اختيار الإشبين والإشبينة",
-          "owner": "both",
-          "deadline": "أغسطس",
-          "notes": "يقدروا يساعدوا في حاجات تانية",
           "completed": false,
           "private": false
         },
@@ -580,29 +571,11 @@
           "private": false
         },
         {
-          "id": "t55",
-          "title": "تجربة مكياج وكوافير (Trial)",
-          "owner": "sherry",
-          "deadline": "نوفمبر",
-          "notes": "جربي قبل ما تثبتي اللوك",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t56",
           "title": "طلب توزيعات الضيوف",
           "owner": "sherry",
           "deadline": "نوفمبر",
           "notes": "بوكسات صغيرة أو شوكولاتة أو ورد",
-          "completed": false,
-          "private": false
-        },
-        {
-          "id": "t57",
-          "title": "طلب تورتة الفرح",
-          "owner": "both",
-          "deadline": "نوفمبر",
-          "notes": "tasting قبل ما تثبت الطعم",
           "completed": false,
           "private": false
         },
@@ -668,6 +641,15 @@
           "owner": "ebram",
           "deadline": "منتصف ديسمبر",
           "notes": "احتفظ بفواتير",
+          "completed": false,
+          "private": false
+        },
+        {
+          "id": "t62",
+          "title": "بروفة الكنيسة (Rehearsal)",
+          "owner": "both",
+          "deadline": "أسبوع قبل الفرح",
+          "notes": "اتفقوا مع الكاهن على البروفة",
           "completed": false,
           "private": false
         },
@@ -812,7 +794,7 @@
           "id": "t76",
           "title": "اليوم اللي قبل: نوم بدري",
           "owner": "both",
-          "deadline": "7 يناير",
+          "deadline": "6 يناير",
           "notes": "متعملش حاجة جديدة، استريح",
           "completed": false,
           "private": false
@@ -822,9 +804,9 @@
           "title": "مل بنزين كل العربيات",
           "owner": "ebram",
           "deadline": "6 يناير",
-          "notes": "العربية بتاعتك + عربية الفرح + عربية الأهل",
+          "notes": "العربية بتاعتك",
           "completed": false,
-          "private": true
+          "private": false
         },
         {
           "id": "t103",
@@ -933,6 +915,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-11T10:55:32.358Z",
-  "_savedBy": "ebram"
+  "_savedAt": "2026-07-11T10:55:45.836Z",
+  "_savedBy": "sherry"
 }
