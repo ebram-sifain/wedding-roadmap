@@ -732,7 +732,7 @@
           "deadline": "منتصف ديسمبر",
           "notes": "اعمله Google Doc وشاركه مع كل الـ vendors",
           "completed": false,
-          "private": false
+          "private": true
         },
         {
           "id": "t100",
@@ -942,6 +942,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-11T10:47:07.998Z",
+  "_savedAt": "2026-07-11T10:51:25.654Z",
   "_savedBy": "ebram"
 }
