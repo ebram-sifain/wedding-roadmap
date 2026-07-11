@@ -616,15 +616,6 @@
           "private": false
         },
         {
-          "id": "t59",
-          "title": "حصر الـ RSVPs وعدد الضيوف النهائي",
-          "owner": "both",
-          "deadline": "بداية ديسمبر",
-          "notes": "بلغ القاعة والكاترينج بالعدد",
-          "completed": false,
-          "private": true
-        },
-        {
           "id": "t94",
           "title": "أدوات تنظيف للبيت",
           "owner": "sherry",
@@ -960,6 +951,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-11T10:44:49.528Z",
+  "_savedAt": "2026-07-11T10:44:52.237Z",
   "_savedBy": "ebram"
 }
