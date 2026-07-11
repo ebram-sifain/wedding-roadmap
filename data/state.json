@@ -824,7 +824,7 @@
           "deadline": "6 يناير",
           "notes": "العربية بتاعتك + عربية الفرح + عربية الأهل",
           "completed": false,
-          "private": false
+          "private": true
         },
         {
           "id": "t103",
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-11T10:55:15.428Z",
+  "_savedAt": "2026-07-11T10:55:32.358Z",
   "_savedBy": "ebram"
 }
