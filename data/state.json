@@ -369,15 +369,6 @@
           "private": false
         },
         {
-          "id": "t38",
-          "title": "اختيار الإشبين والإشبينة",
-          "owner": "both",
-          "deadline": "أغسطس",
-          "notes": "يقدروا يساعدوا في حاجات تانية",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t39",
           "title": "شراء أوضة النوم",
           "owner": "both",
@@ -960,6 +951,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-11T10:31:52.833Z",
+  "_savedAt": "2026-07-11T10:39:32.392Z",
   "_savedBy": "sherry"
 }
