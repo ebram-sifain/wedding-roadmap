@@ -571,15 +571,6 @@
           "private": false
         },
         {
-          "id": "t55",
-          "title": "تجربة مكياج وكوافير (Trial)",
-          "owner": "sherry",
-          "deadline": "نوفمبر",
-          "notes": "جربي قبل ما تثبتي اللوك",
-          "completed": false,
-          "private": false
-        },
-        {
           "id": "t56",
           "title": "طلب توزيعات الضيوف",
           "owner": "sherry",
@@ -951,6 +942,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-11T10:39:32.392Z",
+  "_savedAt": "2026-07-11T10:42:28.735Z",
   "_savedBy": "sherry"
 }
