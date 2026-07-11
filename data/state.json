@@ -812,7 +812,7 @@
           "id": "t76",
           "title": "اليوم اللي قبل: نوم بدري",
           "owner": "both",
-          "deadline": "6 يناير",
+          "deadline": "7 يناير",
           "notes": "متعملش حاجة جديدة، استريح",
           "completed": false,
           "private": false
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-11T10:51:34.209Z",
+  "_savedAt": "2026-07-11T10:55:15.428Z",
   "_savedBy": "ebram"
 }
