@@ -672,15 +672,6 @@
           "private": false
         },
         {
-          "id": "t62",
-          "title": "بروفة الكنيسة (Rehearsal)",
-          "owner": "both",
-          "deadline": "أسبوع قبل الفرح",
-          "notes": "اتفقوا مع الكاهن على البروفة",
-          "completed": false,
-          "private": true
-        },
-        {
           "id": "t63",
           "title": "جلسة تصوير قبل الفرح (Pre-wedding shoot)",
           "owner": "both",
@@ -951,6 +942,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-11T10:47:01.883Z",
+  "_savedAt": "2026-07-11T10:47:07.998Z",
   "_savedBy": "ebram"
 }
