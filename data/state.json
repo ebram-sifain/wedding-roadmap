@@ -586,7 +586,7 @@
           "deadline": "نوفمبر",
           "notes": "tasting قبل ما تثبت الطعم",
           "completed": false,
-          "private": false
+          "private": true
         },
         {
           "id": "t58",
@@ -942,6 +942,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-11T10:42:28.735Z",
+  "_savedAt": "2026-07-11T10:43:25.073Z",
   "_savedBy": "sherry"
 }
