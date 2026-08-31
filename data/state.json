@@ -338,7 +338,7 @@
           "owner": "sherry",
           "deadline": "أغسطس",
           "notes": "يحتاج ٣-٤ بروفات على ٣ شهور",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-08-31T13:33:54.764Z",
+  "_savedAt": "2026-08-31T13:34:00.486Z",
   "_savedBy": "ebram"
 }
