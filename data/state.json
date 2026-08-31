@@ -473,7 +473,7 @@
           "owner": "sherry",
           "deadline": "أكتوبر-نوفمبر",
           "notes": "أوانٍ، أطباق، فضيات، فوط، تنظيف",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-08-31T13:34:24.498Z",
+  "_savedAt": "2026-08-31T13:34:29.199Z",
   "_savedBy": "ebram"
 }
