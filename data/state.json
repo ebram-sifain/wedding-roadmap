@@ -491,7 +491,7 @@
           "owner": "both",
           "deadline": "نوفمبر",
           "notes": "بعد ما تخلص الدهانات",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-08-31T13:34:29.199Z",
+  "_savedAt": "2026-08-31T13:34:34.337Z",
   "_savedBy": "ebram"
 }
