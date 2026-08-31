@@ -509,7 +509,7 @@
           "owner": "sherry",
           "deadline": "أكتوبر-نوفمبر",
           "notes": "ميكسر، كاتل، توستر، خلاط، عصارة، حلة ضغط، إيركير",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-08-31T13:34:34.337Z",
+  "_savedAt": "2026-08-31T13:34:38.688Z",
   "_savedBy": "ebram"
 }
