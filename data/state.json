@@ -186,7 +186,7 @@
           "owner": "ebram",
           "deadline": "أول أسبوع يونيو",
           "notes": "قارن السعر والوقت والـ references",
-          "completed": false,
+          "completed": true,
           "private": true
         },
         {
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-08-31T13:32:51.996Z",
+  "_savedAt": "2026-08-31T13:32:59.015Z",
   "_savedBy": "ebram"
 }
