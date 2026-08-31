@@ -621,7 +621,7 @@
           "owner": "sherry",
           "deadline": "نوفمبر",
           "notes": "ممسحة، فرش، صابون، مساحيق، قفازات",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-08-31T13:34:38.688Z",
+  "_savedAt": "2026-08-31T13:35:14.392Z",
   "_savedBy": "ebram"
 }
