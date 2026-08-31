@@ -455,7 +455,7 @@
           "owner": "both",
           "deadline": "سبتمبر",
           "notes": "للأوض كلها. قيس قبل الشراء",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-08-31T13:34:17.528Z",
+  "_savedAt": "2026-08-31T13:34:24.498Z",
   "_savedBy": "ebram"
 }
