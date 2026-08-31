@@ -234,7 +234,7 @@
           "deadline": "بمجرد ما تبدأ الجلسات",
           "notes": "الكنيسة بتطلبها كشرط للزواج، ممكن ٦ شهور",
           "critical": true,
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-08-31T13:33:12.856Z",
+  "_savedAt": "2026-08-31T13:33:23.798Z",
   "_savedBy": "ebram"
 }
