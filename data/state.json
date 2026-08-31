@@ -280,7 +280,7 @@
           "owner": "both",
           "deadline": "بحد أقصى 15 يونيو",
           "notes": "يحدد التأشيرة والميزانية",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-08-31T13:33:28.147Z",
+  "_savedAt": "2026-08-31T13:33:39.570Z",
   "_savedBy": "ebram"
 }
