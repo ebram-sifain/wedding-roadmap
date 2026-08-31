@@ -7,7 +7,7 @@
   },
   "events": {
     "engagement": "2026-05-27",
-    "wedding": "2027-01-08"
+    "wedding": "2026-10-24"
   },
   "phases": [
     {
@@ -860,7 +860,7 @@
       "id": "phase-8",
       "title": "يوم الفرح",
       "titleEn": "Wedding Day",
-      "dateRange": "8 Jan 2027",
+      "dateRange": "24 Oct 2026",
       "icon": "💒",
       "color": "#8B0000",
       "description": "The best day of your lives 💍",
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-07-11T10:57:45.302Z",
+  "_savedAt": "2026-08-31T13:32:19.997Z",
   "_savedBy": "ebram"
 }
