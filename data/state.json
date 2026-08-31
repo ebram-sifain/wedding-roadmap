@@ -168,7 +168,7 @@
           "owner": "ebram",
           "deadline": "بعد قرار الشقة بأسبوع",
           "notes": "راجع البنود قانونياً قبل التوقيع",
-          "completed": false,
+          "completed": true,
           "private": true
         },
         {
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-08-31T13:33:07.120Z",
+  "_savedAt": "2026-08-31T13:33:12.856Z",
   "_savedBy": "ebram"
 }
