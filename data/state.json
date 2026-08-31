@@ -365,7 +365,7 @@
           "owner": "ebram",
           "deadline": "سبتمبر",
           "notes": "اتفق على الديكور",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-08-31T13:34:00.486Z",
+  "_savedAt": "2026-08-31T13:34:07.005Z",
   "_savedBy": "ebram"
 }
