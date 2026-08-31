@@ -151,7 +151,7 @@
           "notes": "اطلب قائمة الأوراق وسؤال عن مدارس الزواج",
           "critical": true,
           "completed": false,
-          "private": false
+          "private": true
         },
         {
           "id": "t17",
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-08-31T13:32:19.997Z",
+  "_savedAt": "2026-08-31T13:32:45.262Z",
   "_savedBy": "ebram"
 }
