@@ -428,7 +428,7 @@
           "owner": "ebram",
           "deadline": "أغسطس",
           "notes": "الأسعار بتزيد كل ما اتأخرت",
-          "completed": false,
+          "completed": true,
           "private": false
         },
         {
@@ -933,6 +933,6 @@
       ]
     }
   ],
-  "_savedAt": "2026-08-31T13:34:07.005Z",
+  "_savedAt": "2026-08-31T13:34:13.142Z",
   "_savedBy": "ebram"
 }
